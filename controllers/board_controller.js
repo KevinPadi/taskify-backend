@@ -3,10 +3,9 @@ import Board from '../models/board_model'
 // create board
 export const createBoard = async (req, res) => {
   try {
-    const { name, description } = req.body
+    const { name } = req.body
     const newBoard = new Board({
       name,
-      description,
       createdBy: req.user.id
     })
     await newBoard.save()
