@@ -8,31 +8,37 @@ configDotenv()
 const TOKEN_SECRET = process.env.TOKEN_SECRET
 
 export const registerUser = async (req, res) => {
-  const { userName, email, password } = req.body
+  const { userName, email, password } = req.body;
 
   try {
-    const passwordHash = await bcrypt.hash(password, 10)
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Email already exists' });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 10);
 
     const newUser = new User({
       userName,
       email,
       password: passwordHash
-    })
+    });
 
-    const userSaved = await newUser.save()
-    const token = await createAccessToken({ id: userSaved._id })
+    const userSaved = await newUser.save();
+    const token = await createAccessToken({ id: userSaved._id });
 
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'Strict',
-    })
+    });
 
-    res.status(201).json({ message: 'Usuario registrado exitosamente', user: newUser, token })
+    res.status(201).json({ message: 'User registered successfully', user: newUser, token });
   } catch (error) {
-    res.status(500).json({ message: 'Error al registrar el usuario', error: error.message })
+    res.status(500).json({ message: 'Error registering user', error: error.message });
   }
 }
+
 
 export const login = async (req, res) => {
   const { email, password } = req.body
