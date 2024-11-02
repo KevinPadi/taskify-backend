@@ -28,7 +28,7 @@ app.use('/api', boardsRouter)
 app.use('/api', listRouter)
 app.use('/api', cardRouter)
 
-const PORT = process.env.PORT ?? 1234
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
