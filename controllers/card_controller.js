@@ -1,5 +1,6 @@
 import Card from '../models/card_model.js'
 import Board from '../models/board_model.js'
+import { ObjectId } from 'mongodb'
 
 // get cards
 export const getCards = async (req, res) => {
@@ -19,7 +20,7 @@ export const getCards = async (req, res) => {
 // create card
 export const createCard = async (req, res) => {
   try {
-    const { title, description, priority, list } = req.body
+    const { title, description, priority } = req.body
 
     if (!title) {
       return res.status(400).json({ message: 'Title is required' })
@@ -34,7 +35,7 @@ export const createCard = async (req, res) => {
       title,
       description,
       priority,
-      list,
+      list: req.params.listId,
       board: req.params.boardId,
       user: req.user.id
     })
@@ -65,7 +66,10 @@ export const updateCard = async (req, res) => {
     if (title !== undefined) card.title = title
     if (description !== undefined) card.description = description
     if (priority !== undefined) card.priority = priority
-    if (list !== undefined) card.list = list
+    if (list !== undefined) {
+      const listid = new ObjectId(list)
+      card.list = listid
+    }
 
     await card.save()
     res.status(200).json(card)

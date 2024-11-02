@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
 const listSchema = z.object({
-  name: z.string().min(1, { message: 'Name is required' }),
-  board: z.string().min(1, { message: 'Board ID is required' }),
-  order: z.number().positive({ message: 'Order must be a positive number' }),
+  name: z.string({
+    required_error: 'Name is required'
+  }).min(1, { message: 'Name is required' })
 });
 
 export default listSchema;

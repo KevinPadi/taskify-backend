@@ -1,4 +1,4 @@
-import List from '../models/list_model'
+import List from '../models/list_model.js'
 
 // create list
 export const createList = async (req, res) => {
