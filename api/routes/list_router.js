@@ -4,9 +4,9 @@ import {
   getLists,
   updateList,
   deleteList
-} from "../controllers/list_controller.js"
-import { auth } from "../middlewares/auth_middleware.js"
-import { validateSchema } from "../middlewares/validator_middleware.js"
+} from "../api/controllers/list_controller.js"
+import { auth } from "../api/middlewares/auth_middleware.js"
+import { validateSchema } from "../api/middlewares/validator_middleware.js"
 import listSchema from "../Schemas/listSchema.js"
 
 export const listRouter = Router()

@@ -5,7 +5,7 @@ import {
   verifyToken,
   logout
 } from '../controllers/user_controller.js'
-import { registerSchema, loginSchema } from '../schemas/userSchema.js'
+import { registerSchema, loginSchema } from '../Schemas/userSchema.js'
 import { validateSchema } from '../middlewares/validator_middleware.js'
 export const authRouter = Router()
 

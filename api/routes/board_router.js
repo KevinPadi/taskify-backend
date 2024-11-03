@@ -4,9 +4,9 @@ import {
   getBoards,
   updateBoard,
   deleteBoard,
-} from '../controllers/board_controller.js'
-import { auth } from '../middlewares/auth_middleware.js'
-import { validateSchema } from '../middlewares/validator_middleware.js'
+} from '../api/controllers/board_controller.js'
+import { auth } from '../api/middlewares/auth_middleware.js'
+import { validateSchema } from '../api/middlewares/validator_middleware.js'
 import { boardSchema } from '../schemas/boardSchema.js'
 
 export const boardsRouter = Router()

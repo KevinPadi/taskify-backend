@@ -4,9 +4,9 @@ import {
   updateCard,
   createCard,
   deleteCard
-} from "../controllers/card_controller.js";
-import { auth } from "../middlewares/auth_middleware.js";
-import { validateSchema } from "../middlewares/validator_middleware.js";
+} from "../api/controllers/card_controller.js";
+import { auth } from "../api/middlewares/auth_middleware.js";
+import { validateSchema } from "../api/middlewares/validator_middleware.js";
 import cardSchema from '../Schemas/cardSchema.js'
 
 export const cardRouter = Router()
