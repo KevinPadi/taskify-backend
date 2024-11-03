@@ -40,9 +40,21 @@ apiRouter.get('/verify', verifyToken);
 apiRouter.post('/logout', logout);
 
 // Rutas de tableros
-// apiRouter.get('/board', auth, getBoards);
-// apiRouter.post('/board', auth, validateSchema(boardSchema), createBoard);
-// apiRouter.patch('/board/:id', auth, updateBoard);
-// apiRouter.delete('/board/:id', auth, deleteBoard);
+apiRouter.get('/board', auth, getBoards);
+apiRouter.post('/board', auth, validateSchema(boardSchema), createBoard);
+apiRouter.patch('/board/:id', auth, updateBoard);
+apiRouter.delete('/board/:id', auth, deleteBoard);
+
+// Rutas de listas
+apiRouter.get('/list/:boardId', auth, getLists);
+apiRouter.post('/list/:boardId', auth, validateSchema(listSchema), createList);
+apiRouter.patch('/list/:boardId/:id', auth, updateList);
+apiRouter.delete('/list/:boardId/:id', auth, deleteList);
+
+// Rutas de cards
+apiRouter.get('/card/:listId/:boardId', auth, getCards);
+apiRouter.post('/card/:listId/:boardId', auth, validateSchema(cardSchema), createCard);
+apiRouter.patch('/card/:listId/:boardId/:id', auth, updateCard);
+apiRouter.delete('/card/:listId/:boardId/:id', auth, deleteCard);
 
 export default apiRouter;
