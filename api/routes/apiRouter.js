@@ -26,7 +26,7 @@ import {
 } from '../controllers/user_controller.js';
 import { auth } from '../middlewares/auth_middleware.js';
 import { validateSchema } from '../middlewares/validator_middleware.js';
-import boardSchema from '../schemas/boardSchema.js';
+// import boardSchema from '../schemas/boardSchema.js';
 import listSchema from '../schemas/listSchema.js';
 import cardSchema from '../schemas/cardSchema.js';
 import { registerSchema, loginSchema } from '../schemas/userSchema.js';
@@ -40,10 +40,10 @@ apiRouter.get('/verify', verifyToken);
 apiRouter.post('/logout', logout);
 
 // Rutas de tableros
-apiRouter.get('/board', auth, getBoards);
-apiRouter.post('/board', auth, validateSchema(boardSchema), createBoard);
-apiRouter.patch('/board/:id', auth, updateBoard);
-apiRouter.delete('/board/:id', auth, deleteBoard);
+// apiRouter.get('/board', auth, getBoards);
+// apiRouter.post('/board', auth, validateSchema(boardSchema), createBoard);
+// apiRouter.patch('/board/:id', auth, updateBoard);
+// apiRouter.delete('/board/:id', auth, deleteBoard);
 
 // Rutas de listas
 apiRouter.get('/list/:boardId', auth, getLists);
