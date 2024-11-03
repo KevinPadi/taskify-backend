@@ -26,7 +26,7 @@ import {
 } from '../controllers/user_controller.js';
 import { auth } from '../middlewares/auth_middleware.js';
 import { validateSchema } from '../middlewares/validator_middleware.js';
-import { boardSchema } from '../schemas/boardSchema.js';
+import boardSchema from '../schemas/boardSchema.js';
 import listSchema from '../schemas/listSchema.js';
 import cardSchema from '../schemas/cardSchema.js';
 import { registerSchema, loginSchema } from '../schemas/userSchema.js';
