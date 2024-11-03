@@ -3,10 +3,7 @@ import { config as configDotenv } from "dotenv"
 import connectDB from "./config/db.js"
 import cors from "cors"
 import cookieParser from "cookie-parser"
-import { authRouter } from "./routes/user_router.js"
-import { boardsRouter } from "./routes/board_router.js"
-import { listRouter } from "./routes/list_router.js"
-import { cardRouter } from "./routes/card_router.js"
+import apiRouter from "./routes/apiRouter.js"
 
 configDotenv()
 
@@ -23,10 +20,7 @@ app.use(
 )
 app.use(cookieParser())
 
-app.use('/api/auth', authRouter)
-app.use('/api', boardsRouter)
-app.use('/api', listRouter)
-app.use('/api', cardRouter)
+app.use('/api', apiRouter);
 
 const PORT = process.env.PORT
 
