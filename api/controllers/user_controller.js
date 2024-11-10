@@ -29,7 +29,7 @@ export const registerUser = async (req, res) => {
 
     res.cookie('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: false,
       sameSite: 'Strict',
     });
 
@@ -58,7 +58,7 @@ export const login = async (req, res) => {
     const token = await createAccessToken({ id: userFound._id })
     res.cookie('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: false,
       sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     })
 
