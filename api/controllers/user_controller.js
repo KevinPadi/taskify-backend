@@ -29,8 +29,8 @@ export const registerUser = async (req, res) => {
 
     res.cookie('token', token, {
       httpOnly: true,
-      secure: true,
-      sameSite: 'none',
+      secure: false,
+      sameSite: 'lax',
     });
 
     res.status(201).json({ message: 'User registered successfully', user: newUser, token });
@@ -58,8 +58,8 @@ export const login = async (req, res) => {
     const token = await createAccessToken({ id: userFound._id })
     res.cookie('token', token, {
       httpOnly: true,
-      secure: true,
-      sameSite: 'none',
+      secure: false,
+      sameSite: 'lax',
     })
 
     res.status(200).json({
